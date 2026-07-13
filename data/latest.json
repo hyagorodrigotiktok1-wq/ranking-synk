@@ -1,0 +1,146 @@
+{
+  "updated_at": "2026-07-13T08:07:00-03:00",
+  "updated_at_display": "13/07/2026 às 08:07 (BRT)",
+  "candidates": [
+    {
+      "handle": "rodrigovaladares_",
+      "name": "Rodrigo Valadares",
+      "party": "PL",
+      "followers": 453679,
+      "highlight": true,
+      "period": { "start": "2026-07-06", "end": "2026-07-13" },
+      "stats": {
+        "posts": 0, "reels": 0, "photos": 0, "carousels": 0,
+        "views": 0, "likes": 0, "comments": 0,
+        "interactions": 0, "engagement_rate": 0.0,
+        "avg_views_per_post": 0, "avg_interactions_per_post": 0
+      }
+    },
+    {
+      "handle": "alessandrovieirase",
+      "name": "Alessandro Vieira",
+      "party": "MDB",
+      "followers": 402120,
+      "highlight": false,
+      "period": { "start": "2026-07-06", "end": "2026-07-13" },
+      "stats": {
+        "posts": 0, "reels": 0, "photos": 0, "carousels": 0,
+        "views": 0, "likes": 0, "comments": 0,
+        "interactions": 0, "engagement_rate": 0.0,
+        "avg_views_per_post": 0, "avg_interactions_per_post": 0
+      }
+    },
+    {
+      "handle": "del.andredavid",
+      "name": "André David",
+      "party": "Republicanos",
+      "followers": 343294,
+      "highlight": false,
+      "period": { "start": "2026-07-06", "end": "2026-07-13" },
+      "stats": {
+        "posts": 0, "reels": 0, "photos": 0, "carousels": 0,
+        "views": 0, "likes": 0, "comments": 0,
+        "interactions": 0, "engagement_rate": 0.0,
+        "avg_views_per_post": 0, "avg_interactions_per_post": 0
+      }
+    },
+    {
+      "handle": "senadorrogerio",
+      "name": "Rogério Carvalho",
+      "party": "PT",
+      "followers": 174993,
+      "highlight": false,
+      "period": { "start": "2026-07-06", "end": "2026-07-13" },
+      "stats": {
+        "posts": 0, "reels": 0, "photos": 0, "carousels": 0,
+        "views": 0, "likes": 0, "comments": 0,
+        "interactions": 0, "engagement_rate": 0.0,
+        "avg_views_per_post": 0, "avg_interactions_per_post": 0
+      }
+    },
+    {
+      "handle": "edvaldonogueira",
+      "name": "Edvaldo Nogueira",
+      "party": "PDT",
+      "followers": 139459,
+      "highlight": false,
+      "period": { "start": "2026-07-06", "end": "2026-07-13" },
+      "stats": {
+        "posts": 0, "reels": 0, "photos": 0, "carousels": 0,
+        "views": 0, "likes": 0, "comments": 0,
+        "interactions": 0, "engagement_rate": 0.0,
+        "avg_views_per_post": 0, "avg_interactions_per_post": 0
+      }
+    },
+    {
+      "handle": "andremourase",
+      "name": "André Moura",
+      "party": "União Brasil",
+      "followers": 70906,
+      "highlight": false,
+      "period": { "start": "2026-07-06", "end": "2026-07-13" },
+      "stats": {
+        "posts": 0, "reels": 0, "photos": 0, "carousels": 0,
+        "views": 0, "likes": 0, "comments": 0,
+        "interactions": 0, "engagement_rate": 0.0,
+        "avg_views_per_post": 0, "avg_interactions_per_post": 0
+      }
+    },
+    {
+      "handle": "eduardoamorimse",
+      "name": "Eduardo Amorim",
+      "party": "Republicanos",
+      "followers": 51481,
+      "highlight": false,
+      "period": { "start": "2026-07-06", "end": "2026-07-13" },
+      "stats": {
+        "posts": 0, "reels": 0, "photos": 0, "carousels": 0,
+        "views": 0, "likes": 0, "comments": 0,
+        "interactions": 0, "engagement_rate": 0.0,
+        "avg_views_per_post": 0, "avg_interactions_per_post": 0
+      }
+    },
+    {
+      "handle": "segueadailton",
+      "name": "Adailton de Valmir",
+      "party": "Podemos",
+      "followers": 45962,
+      "highlight": false,
+      "period": { "start": "2026-07-06", "end": "2026-07-13" },
+      "stats": {
+        "posts": 0, "reels": 0, "photos": 0, "carousels": 0,
+        "views": 0, "likes": 0, "comments": 0,
+        "interactions": 0, "engagement_rate": 0.0,
+        "avg_views_per_post": 0, "avg_interactions_per_post": 0
+      }
+    },
+    {
+      "handle": "iranbarbosaoficial",
+      "name": "Iran Barbosa",
+      "party": "PSOL",
+      "followers": 19521,
+      "highlight": false,
+      "period": { "start": "2026-07-06", "end": "2026-07-13" },
+      "stats": {
+        "posts": 0, "reels": 0, "photos": 0, "carousels": 0,
+        "views": 0, "likes": 0, "comments": 0,
+        "interactions": 0, "engagement_rate": 0.0,
+        "avg_views_per_post": 0, "avg_interactions_per_post": 0
+      }
+    },
+    {
+      "handle": "coronelrochase",
+      "name": "Coronel Rocha",
+      "party": "PL",
+      "followers": 16445,
+      "highlight": false,
+      "period": { "start": "2026-07-06", "end": "2026-07-13" },
+      "stats": {
+        "posts": 0, "reels": 0, "photos": 0, "carousels": 0,
+        "views": 0, "likes": 0, "comments": 0,
+        "interactions": 0, "engagement_rate": 0.0,
+        "avg_views_per_post": 0, "avg_interactions_per_post": 0
+      }
+    }
+  ]
+}

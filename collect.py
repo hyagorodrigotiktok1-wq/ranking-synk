@@ -135,14 +135,36 @@ for i, cand in enumerate(CANDIDATES):
         print("  aguardando 8s...")
         time.sleep(8)
 
-output = {
-    "updated_at": now.strftime("%Y-%m-%dT%H:%M:%S-03:00"),
-    "updated_at_display": now.strftime("%d/%m/%Y às %H:%M (BRT)"),
-    "candidates": results,
-}
+SUPABASE_URL = os.environ.get("SUPABASE_URL", "https://mxkqezkrbsrunmdfurrz.supabase.co")
+SUPABASE_KEY = os.environ["SUPABASE_SERVICE_KEY"]
 
-os.makedirs("data", exist_ok=True)
-with open("data/latest.json", "w", encoding="utf-8") as f:
-    json.dump(output, f, ensure_ascii=False, indent=2)
+rows = []
+for r in results:
+    rows.append({
+        "handle": r["handle"], "name": r["name"], "party": r["party"],
+        "followers": r["followers"], "highlight": r["highlight"],
+        "period_start": r["period"]["start"], "period_end": r["period"]["end"],
+        "posts": r["stats"]["posts"], "reels": r["stats"]["reels"],
+        "photos": r["stats"]["photos"], "carousels": r["stats"]["carousels"],
+        "views": r["stats"]["views"], "likes": r["stats"]["likes"],
+        "comments": r["stats"]["comments"], "interactions": r["stats"]["interactions"],
+        "engagement_rate": r["stats"]["engagement_rate"],
+        "avg_views_per_post": r["stats"]["avg_views_per_post"],
+        "avg_interactions_per_post": r["stats"]["avg_interactions_per_post"],
+    })
 
-print(f"\n✅ Salvo em data/latest.json ({len(results)} candidatos)")
+import urllib.request
+body = json.dumps(rows).encode("utf-8")
+req = urllib.request.Request(
+    f"{SUPABASE_URL}/rest/v1/ig_stats",
+    data=body,
+    headers={
+        "apikey": SUPABASE_KEY,
+        "Authorization": f"Bearer {SUPABASE_KEY}",
+        "Content-Type": "application/json",
+        "Prefer": "resolution=merge-duplicates",
+    },
+    method="POST",
+)
+resp = urllib.request.urlopen(req)
+print(f"\n✅ Salvo no Supabase ({len(rows)} candidatos) — HTTP {resp.status}")

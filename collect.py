@@ -46,9 +46,12 @@ def collect_user(candidate):
             break
 
         if resp.status_code == 429:
-            print(f"  [{handle}] rate limit, aguardando 60s...")
-            time.sleep(60)
+            print(f"  [{handle}] rate limit, aguardando 90s...")
+            time.sleep(90)
             continue
+        if resp.status_code in (401, 403):
+            print(f"  [{handle}] autenticacao negada HTTP {resp.status_code} - sessao invalida ou bloqueada")
+            break
         if not resp.ok:
             print(f"  [{handle}] HTTP {resp.status_code}")
             break
@@ -123,11 +126,14 @@ def collect_user(candidate):
 
 
 results = []
-for cand in CANDIDATES:
+for i, cand in enumerate(CANDIDATES):
     print(f"Coletando @{cand['handle']}...")
     result = collect_user(cand)
     results.append(result)
     print(f"  → {result['stats']['posts']} posts, {result['stats']['views']:,} views")
+    if i < len(CANDIDATES) - 1:
+        print("  aguardando 8s...")
+        time.sleep(8)
 
 output = {
     "updated_at": now.strftime("%Y-%m-%dT%H:%M:%S-03:00"),

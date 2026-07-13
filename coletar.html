@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Como Atualizar o Ranking — Synk Produções</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0a0a0f; color: #e2e8f0; font-family: system-ui, sans-serif; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
+  .card { background: #13131a; border: 1px solid #1e1e2e; border-radius: 16px; padding: 36px; max-width: 580px; width: 100%; }
+  h1 { font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+  p.sub { color: #64748b; font-size: 13px; margin-bottom: 28px; line-height: 1.6; }
+  .step { display: flex; gap: 16px; margin-bottom: 24px; align-items: flex-start; }
+  .step-num { min-width: 32px; height: 32px; background: linear-gradient(135deg, #7c3aed, #a855f7); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; color: #fff; }
+  .step-content h3 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .step-content p { font-size: 13px; color: #94a3b8; line-height: 1.5; }
+  .step-content code { background: #0d0d14; border: 1px solid #1e1e2e; border-radius: 4px; padding: 2px 8px; font-size: 12px; color: #a855f7; font-family: monospace; }
+  .bookmarklet-box { background: #0d0d14; border: 2px dashed #7c3aed44; border-radius: 12px; padding: 20px; text-align: center; margin: 24px 0; }
+  .bookmarklet-box p { font-size: 12px; color: #64748b; margin-bottom: 12px; }
+  .bm-btn { display: inline-block; background: linear-gradient(135deg, #7c3aed, #a855f7); color: #fff; padding: 10px 22px; border-radius: 8px; font-weight: 700; font-size: 13px; text-decoration: none; cursor: grab; border: none; }
+  .divider { border: none; border-top: 1px solid #1e1e2e; margin: 28px 0; }
+  .links { display: flex; gap: 12px; flex-wrap: wrap; }
+  .link-btn { background: #1e1e2e; border: 1px solid #2e2e40; border-radius: 8px; padding: 8px 16px; font-size: 13px; font-weight: 600; text-decoration: none; color: #e2e8f0; }
+  .note { background: #1a1028; border: 1px solid #7c3aed33; border-radius: 8px; padding: 12px 16px; font-size: 12px; color: #94a3b8; line-height: 1.6; margin-top: 20px; }
+  .note strong { color: #a855f7; }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>📊 Como atualizar o ranking</h1>
+  <p class="sub">O ranking precisa ser atualizado pelo seu navegador (Chrome), pois os dados vêm do Instagram onde você está logado. Siga os passos abaixo — leva menos de 2 minutos.</p>
+
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-content">
+      <h3>Arraste o botão abaixo para a barra de favoritos</h3>
+      <p>Faça isso uma vez só. Se a barra de favoritos não estiver visível, pressione <code>Ctrl+Shift+B</code>.</p>
+    </div>
+  </div>
+
+  <div class="bookmarklet-box">
+    <p>Arraste este botão para sua barra de favoritos:</p>
+    <a class="bm-btn" id="bm-link" href="#">📊 Synk Ranking</a>
+  </div>
+
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-content">
+      <h3>Abra o Instagram no Chrome</h3>
+      <p>Acesse <code>instagram.com</code> e certifique-se de estar logado em qualquer conta.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-content">
+      <h3>Clique no favorito "📊 Synk Ranking"</h3>
+      <p>Um painel vai aparecer na tela. Insira o GitHub Token e clique em "Coletar e publicar". Pronto — o ranking é atualizado em segundos.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="links">
+    <a class="link-btn" href="https://hyagorodrigotiktok1-wq.github.io/ranking-synk/" target="_blank">🏆 Ver ranking</a>
+    <a class="link-btn" href="https://github.com/settings/tokens/new?scopes=repo&description=ranking-synk" target="_blank">🔑 Criar GitHub Token</a>
+  </div>
+
+  <div class="note">
+    <strong>GitHub Token:</strong> acesse o link acima, marque o escopo <strong>repo</strong>, gere o token e cole no painel quando aparecer. O token fica salvo no navegador — você só precisa inserir uma vez.
+  </div>
+</div>
+
+<script>
+const script = `fetch('https://hyagorodrigotiktok1-wq.github.io/ranking-synk/coletar.js?t='+Date.now()).then(r=>r.text()).then(c=>eval(c))`;
+document.getElementById('bm-link').href = `javascript:${script}`;
+</script>
+</body>
+</html>

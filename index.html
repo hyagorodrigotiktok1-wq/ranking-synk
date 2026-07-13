@@ -274,35 +274,57 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
   });
 });
 
+const SUPABASE_URL = 'https://mxkqezkrbsrunmdfurrz.supabase.co';
+const SUPABASE_ANON = 'sb_publishable_0ub-MJroc8VEjaUxfddCww_lPGxEe_z';
+
 async function loadData() {
   try {
-    const res = await fetch('data/latest.json?t=' + Date.now());
+    // Busca o período mais recente disponível
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/ig_stats?select=*&order=period_start.desc,views.desc`,
+      { headers: { 'apikey': SUPABASE_ANON, 'Authorization': 'Bearer ' + SUPABASE_ANON } }
+    );
     if (!res.ok) throw new Error('HTTP ' + res.status);
-    const data = await res.json();
+    const rows = await res.json();
+    if (!rows.length) throw new Error('Sem dados');
 
-    candidates = data.candidates;
-    document.getElementById('updated-at').textContent = data.updated_at_display || data.updated_at;
+    // Pega só o período mais recente
+    const latestPeriod = rows[0].period_start;
+    const periodRows = rows.filter(r => r.period_start === latestPeriod);
 
-    if (candidates.length > 0) {
-      const p = candidates[0].period;
-      if (p) {
-        const fmt = d => {
-          const [y,m,day] = d.split('-');
-          return `${day}/${m}/${y}`;
-        };
-        document.getElementById('period-tag').textContent = `📅 ${fmt(p.start)} a ${fmt(p.end)}`;
+    candidates = periodRows.map(r => ({
+      handle: r.handle,
+      name: r.name,
+      party: r.party,
+      followers: r.followers,
+      highlight: r.highlight,
+      period: { start: r.period_start, end: r.period_end },
+      stats: {
+        posts: r.posts, reels: r.reels, photos: r.photos, carousels: r.carousels,
+        views: r.views, likes: r.likes, comments: r.comments,
+        interactions: r.interactions, engagement_rate: r.engagement_rate,
+        avg_views_per_post: r.avg_views_per_post,
+        avg_interactions_per_post: r.avg_interactions_per_post,
       }
-    }
+    }));
+
+    const collectedAt = new Date(rows[0].collected_at);
+    const pad = n => String(n).padStart(2,'0');
+    document.getElementById('updated-at').textContent =
+      `${pad(collectedAt.getDate())}/${pad(collectedAt.getMonth()+1)}/${collectedAt.getFullYear()} às ${pad(collectedAt.getHours())}:${pad(collectedAt.getMinutes())} (BRT)`;
+
+    const fmt = d => { const [y,m,day] = d.split('-'); return `${day}/${m}/${y}`; };
+    document.getElementById('period-tag').textContent =
+      `📅 ${fmt(periodRows[0].period_start)} a ${fmt(periodRows[0].period_end)}`;
 
     document.getElementById('loading').style.display = 'none';
-
     Object.keys(TABS).forEach(t => renderTab(t, candidates));
     document.getElementById('tab-views').classList.add('active');
 
   } catch (e) {
     document.getElementById('loading').innerHTML = `
-      <p style="color:#ef4444;font-size:15px;font-weight:600;">⚠️ Dados não encontrados</p>
-      <p style="margin-top:8px;font-size:13px;">Execute o coletor para gerar <code>data/latest.json</code><br>ou verifique se o GitHub Actions está configurado.</p>`;
+      <p style="color:#ef4444;font-size:15px;font-weight:600;">⚠️ Erro ao carregar dados</p>
+      <p style="margin-top:8px;font-size:13px;">${e.message}</p>`;
   }
 }
 
